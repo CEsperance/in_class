@@ -2,6 +2,7 @@
 
 #import sys is for system variables
 import sys
+import re
 
 #stdin = standard input
 for line in sys.stdin:
@@ -12,9 +13,12 @@ for line in sys.stdin:
     #split each line up
     words = line.split()
 
+    #remove numbers and special characters
+    clean_words = re.sub('\W+','', words)
+
     #process each word and assign a value of 1 to each word
     # \t means tab
-    for word in words:
+    for word in clean_words:
         print(word + "\t1")
 
 #mapper - breaking up words into units
